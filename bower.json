@@ -20,6 +20,6 @@
   ],
   "dependencies": {
     "angular": "^1.7.5",
-    "angular-ui-router": "ui-router#^1.0.20"
+    "angular-ui-router": "ui-router#0.3.1"
   }
 }

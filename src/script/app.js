@@ -1,3 +1,3 @@
 'use strict';
-
-angular.module('app',[]);
+//引入模塊
+angular.module('app',['ui.router']);
