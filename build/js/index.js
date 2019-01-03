@@ -22,6 +22,16 @@ angular.module('app').controller('mainCtrl',['$scope', function($scope){
 }]);
 'use strict'
 //-h代表H 大寫
+//把foot.html <div app-foot=""></div> 根元素<div>替換掉
+angular.module('app').directive('appFoot', [function(){
+    return {
+        restrict:'A',
+        replace: true,
+        templateUrl: 'view/template/foot.html'
+    };
+}])
+'use strict'
+//-h代表H 大寫
 //把head.html <div app-head=""></div> 根元素<div>替換掉
 angular.module('app').directive('appHead',[function(){
     return {
@@ -30,3 +40,13 @@ angular.module('app').directive('appHead',[function(){
         templateUrl: 'view/template/head.html'
     };
 }]);
+'use strict'
+//-h代表H 大寫
+//把position.html <div app=""></div> 根元素<div>替換掉
+angular.module('app').directive('appPositionList', [function(){
+    return {
+        restrict:'A',
+        replace: true,
+        templateUrl: 'view/template/position.html'
+    };
+}])
