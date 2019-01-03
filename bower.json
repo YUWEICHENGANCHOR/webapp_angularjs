@@ -1,0 +1,24 @@
+{
+  "name": "webapp",
+  "description": "angular js webapp",
+  "main": "",
+  "keywords": [
+    "angularjs"
+  ],
+  "authors": [
+    "anchor"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.7.5"
+  }
+}
