@@ -1,0 +1,17 @@
+<ul class="bg-w position-list">
+    <!--<li class="item">
+        <img class="f-l logo" src="image/company-4.jpg" alt="">
+        <h3 class="title">Sales</h3>
+        <p class="text">
+            Internet<br>
+            2018-01-05
+        </p>
+    </li>
+    -->
+    <li class="item" ng-repeat="item in list">
+        <img class="f-l logo" ng-src = "{{item.imgSrc}}" alt="">
+        <h3 class="title" ng-bind = "item.name"></h3>
+        <p class="text" ng-bind = "item.companyName + '[' + item.city + ']'+ item.industry"></p>
+        <p class="text" ng-bind = "item.time"></p>
+    </li>
+</ul>

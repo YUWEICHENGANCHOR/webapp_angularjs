@@ -18,7 +18,23 @@ angular.module('app').config(['$stateProvider', '$urlRouterProvider', function($
 'use strict';
 
 angular.module('app').controller('mainCtrl',['$scope', function($scope){
-
+    $scope.list = [{
+        id:'1',
+        name: 'Sales',
+        imgSrc: 'image/company-4.jpg',
+        companyName: 'Google',
+        city:'New York',
+        industry:'Internet',
+        time:'2018-01-01'
+    },{
+        id:'2',
+        name: 'Software Developer',
+        imgSrc: 'image/company-5.png',
+        companyName: 'Facebook',
+        city:'Los Angelas',
+        industry:'Social network',
+        time:'2018-01-01'
+    }];
 }]);
 'use strict'
 //-h代表H 大寫
@@ -47,6 +63,10 @@ angular.module('app').directive('appPositionList', [function(){
     return {
         restrict:'A',
         replace: true,
-        templateUrl: 'view/template/position.html'
+        templateUrl: 'view/template/positionList.html',
+        scope: {
+            data: '='
+        }
+
     };
 }])
