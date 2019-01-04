@@ -5,4 +5,4 @@
 # Using tech skills Javascript, AngularJs, gulp, ui-router.
 
 # How to open:
-Using gulp serve to start this front end web application.
+Using gulp serve to start this front end web application
