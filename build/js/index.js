@@ -3,8 +3,41 @@
 angular.module('app',['ui.router']);
 'use strict';
 
-angular.module('app').controller('mainCtrl',['$scope', function($scope){
-    $scope.list = [{
+angular.module('app').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+    //配置路由
+    $stateProvider.state('main',{
+        url: '/main',
+        templateUrl: 'view/main.html',
+        controller: 'mainCtrl'
+    }).state('position',{
+        url: '/position/:id',
+        templateUrl: 'view/position.html',
+        controller: 'positionCtrl'
+    }).state('company', {
+        url: '/company:id',
+        templateUrl: 'view/company.html',
+        controller: 'companyCtrl'
+    });
+    //默認跳轉路由
+    $urlRouterProvider.otherwise('main');
+
+
+}])
+'use strict'
+angular.module('app').controller('companyCtrl',['$scope', function($scope){
+
+}]);
+
+'use strict';
+
+angular.module('app').controller('mainCtrl',['$http','$scope', function($http,$scope){
+    $http({
+        method: 'GET',
+        url: '/data/positionList.json'
+    }).then(function(res){
+        $scope.list = res;
+    })
+   /**  $scope.list = [{
         id:'1',
         name: 'Sales',
         imgSrc: 'image/company-4.jpg',
@@ -21,30 +54,24 @@ angular.module('app').controller('mainCtrl',['$scope', function($scope){
         industry:'Social network',
         time:'2018-01-01'
     }];
+    */
 }]);
 'use strict';
 
 angular.module('app').controller('positionCtrl',['$scope', function($scope){
    
 }]);
-'use strict';
-
-angular.module('app').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
-    //配置路由
-    $stateProvider.state('main',{
-        url: '/main',
-        templateUrl: 'view/main.html',
-        controller: 'mainCtrl'
-    }).state('position',{
-        url: '/position/:id',
-        templateUrl: 'view/position.html',
-        controller: 'positionCtrl'
-    });
-    //默認跳轉路由
-    $urlRouterProvider.otherwise('main');
-
-
-}])
+'use strict'
+//-p, -l代表P H 大寫
+//把company.html <div app=""></div> 根元素<div>替換掉
+angular.module('app').directive('appCompany',[function(){
+    return {
+        restrict:'A',
+        replace: true,
+        templateUrl: 'view/template/company.html',
+        
+    }
+}]);
 'use strict'
 //-h代表H 大寫
 //把foot.html <div app-foot=""></div> 根元素<div>替換掉
@@ -83,6 +110,14 @@ angular.module('app').directive('appHeadBar',[function(){
         }
     };
 }]); 
+'use strict'
+angular.module('app').directive('appPositionClass', [function(){
+    return {
+        restrict:'A',
+        replace: true,
+        templateUrl:'view/template/positionClass.html'
+    }
+}]);
 'use strict'
 //-p, -l代表P H 大寫
 //把position.html <div app=""></div> 根元素<div>替換掉

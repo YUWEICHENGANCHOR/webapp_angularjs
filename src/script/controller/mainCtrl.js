@@ -1,7 +1,13 @@
 'use strict';
 
-angular.module('app').controller('mainCtrl',['$scope', function($scope){
-    $scope.list = [{
+angular.module('app').controller('mainCtrl',['$http','$scope', function($http,$scope){
+    $http({
+        method: 'GET',
+        url: '/data/positionList.json'
+    }).then(function(res){
+        $scope.list = res;
+    })
+   /**  $scope.list = [{
         id:'1',
         name: 'Sales',
         imgSrc: 'image/company-4.jpg',
@@ -18,4 +24,5 @@ angular.module('app').controller('mainCtrl',['$scope', function($scope){
         industry:'Social network',
         time:'2018-01-01'
     }];
+    */
 }]);

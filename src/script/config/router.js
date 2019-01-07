@@ -10,6 +10,10 @@ angular.module('app').config(['$stateProvider', '$urlRouterProvider', function($
         url: '/position/:id',
         templateUrl: 'view/position.html',
         controller: 'positionCtrl'
+    }).state('company', {
+        url: '/company:id',
+        templateUrl: 'view/company.html',
+        controller: 'companyCtrl'
     });
     //默認跳轉路由
     $urlRouterProvider.otherwise('main');
