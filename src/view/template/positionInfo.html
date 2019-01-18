@@ -1,7 +1,7 @@
 <!--replace為true時要有根元素-->
 <div class="bg-w position-info p-r">
-    <p><span>Sales</span><span class="ml c-r">3K-5K</span></p>
-    <p><span>New York</span><span class="ml">1-3 years</span><span class="ml">Associate</span></p>
-    <p>High motivate</p>
-    <img class = "p-a" ng-src="{{ imagePath }}" alt="">
+    <p><span ng-bind="pos.name"></span><span class="ml c-r" ng-bind="pos.salary"></span></p>
+    <p><span ng-bind="pos.cityName"></span><span class="ml" ng-bind="pos.experience"></span><span class="ml" ng-bind="pos.education"></span></p>
+    <p  ng-bind="pos.benefit"></p>
+    <img ng-show = "isLogin" class = "p-a" ng-src="{{ imagePath }}" alt="">
 </div>

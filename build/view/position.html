@@ -1,6 +1,6 @@
 <div app-head-bar text= " 'Comapny's position information'"></div>
 <!--若不想要''那要回去headBar.js中去把text改掉，改成@-->
-<div app-position-info=""></div>
+<div app-position-info pos="position" is-login ="isLogin"></div>
 <div app-company=""></div>
 <div class="bg-w position-desc">
     <h5>Position requirements</h5>
@@ -9,4 +9,4 @@
         1: Sales
         </pre>
 </div>
-<button class="bottom-btn c-w">Apply for the position</button>
+<button class="bottom-btn c-w" ng-bind = "isLogin?'apply job':'login in'">Apply for the position</button>

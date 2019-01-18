@@ -1,28 +1,6 @@
 'use strict';
 //引入模塊
 angular.module('app',['ui.router']);
-'use strict';
-
-angular.module('app').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
-    //配置路由
-    $stateProvider.state('main',{
-        url: '/main',
-        templateUrl: 'view/main.html',
-        controller: 'mainCtrl'
-    }).state('position',{
-        url: '/position/:id',
-        templateUrl: 'view/position.html',
-        controller: 'positionCtrl'
-    }).state('company', {
-        url: '/company:id',
-        templateUrl: 'view/company.html',
-        controller: 'companyCtrl'
-    });
-    //默認跳轉路由
-    $urlRouterProvider.otherwise('main');
-
-
-}])
 'use strict'
 angular.module('app').controller('companyCtrl',['$scope', function($scope){
 
@@ -58,9 +36,39 @@ angular.module('app').controller('mainCtrl',['$http','$scope', function($http,$s
 }]);
 'use strict';
 
-angular.module('app').controller('positionCtrl',['$scope', function($scope){
-   
+angular.module('app').controller('positionCtrl',['$http','$state','$scope', function($http,$scope,$state){
+    $scope.isLogin = false;
+    $http({
+        method:'GET',
+        url:'/data/position.json'
+    }).then(function(res){
+        $scope.position = res;
+        console.log(position);
+    })
 }]);
+
+'use strict';
+
+angular.module('app').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+    //配置路由
+    $stateProvider.state('main',{
+        url: '/main',
+        templateUrl: 'view/main.html',
+        controller: 'mainCtrl'
+    }).state('position',{
+        url: '/position/:id',
+        templateUrl: 'view/position.html',
+        controller: 'positionCtrl'
+    }).state('company', {
+        url: '/company:id',
+        templateUrl: 'view/company.html',
+        controller: 'companyCtrl'
+    });
+    //默認跳轉路由
+    $urlRouterProvider.otherwise('main');
+
+
+}])
 'use strict'
 //-p, -l代表P H 大寫
 //把company.html <div app=""></div> 根元素<div>替換掉
@@ -127,7 +135,9 @@ angular.module('app').directive('appPositionInfo',[function(){
         replace: true,
         templateUrl: 'view/template/positionInfo.html',
         scope:{
-            isActive: '='
+            isActive: '=',
+            isLogin:'=',
+            pos:'='
         },
         link: function($scope){
             $scope.imagePath = $scope.isActive? 'image/star-active.png': 'image/star.png';
